@@ -1,5 +1,9 @@
-var express = require('express');
-var dishRouter  = express.Router();
+const express = require('express');
+const bodyparser = require('body-parser');
+
+const dishRouter  = express.Router();
+
+dishRouter.use(bodyparser.json());
 
 dishRouter.route('/')
 .all(function(req,res,next) {
@@ -18,6 +22,7 @@ dishRouter.route('/')
 .delete(function(req, res, next){
         res.end('Deleting all dishes');
 });
+
 
 dishRouter.route('/:dishId')
 .all(function(req,res,next) {

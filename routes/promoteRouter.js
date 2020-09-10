@@ -1,7 +1,12 @@
-var express = require('express');
-var promoRouter  = express.Router();
+const express = require('express');
+const bodyparser = require('body-parser');
 
-promoRouter.route('/')
+const promoteRouter  = express.Router();
+
+promoteRouter.use(bodyparser.json());
+
+
+promoteRouter.route('/')
 .all(function(req,res,next) {
       res.writeHead(200, { 'Content-Type': 'text/plain' });
       next();
@@ -19,7 +24,7 @@ promoRouter.route('/')
         res.end('Deleting all promotions');
 });
 
-promoRouter.route('/:promoId')
+promoteRouter.route('/:promoId')
 .all(function(req,res,next) {
       res.writeHead(200, { 'Content-Type': 'text/plain' });
       next();
@@ -39,4 +44,4 @@ promoRouter.route('/:promoId')
         res.end('Deleting promotion: ' + req.params.promoId);
 });
 
-module.exports = promoRouter;
+module.exports = promoteRouter;

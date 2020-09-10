@@ -1,5 +1,10 @@
-var express = require('express');
-var leaderRouter  = express.Router();
+const express = require('express');
+const bodyparser = require('body-parser');
+
+const leaderRouter  = express.Router();
+
+leaderRouter.use(bodyparser.json());
+
 
 leaderRouter.route('/')
 .all(function(req,res,next) {
